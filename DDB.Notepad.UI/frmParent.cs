@@ -68,6 +68,7 @@ namespace DDB.Notepad.UI
             }
 
             LayoutMdi(MdiLayout.TileVertical);
+            //change
         }
     }
 }
