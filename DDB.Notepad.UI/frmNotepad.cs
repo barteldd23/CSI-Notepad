@@ -36,6 +36,7 @@ namespace DDB.Notepad.UI
             // when timer is enabled.
 
             lbxInfo.Items.Add(DateTime.Now.ToString());
+
         }
     }
 }
