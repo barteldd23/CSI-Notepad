@@ -2,6 +2,9 @@ namespace DDB.Notepad.UI
 {
     public partial class frmNotepad : Form
     {
+        string fileName = @"c:\users\public\data.txt";
+        List<string> lines;
+
         public frmNotepad()
         {
             InitializeComponent();
@@ -79,7 +82,6 @@ namespace DDB.Notepad.UI
             {
                 statusStrip.Text = ex.Message;
                 lblStatus.ForeColor = Color.Red;
-                throw;
             }
         }
 
@@ -89,45 +91,172 @@ namespace DDB.Notepad.UI
             {
                 lblStatus.ForeColor = Color.Blue;
 
-                string strFileName = @"c:\Users\public\data1.txt";
+                //string strFileName = @"c:\Users\public\data.txt";
 
                 StreamReader streamReader;
                 lblInfo.Text = string.Empty;
 
-                if (File.Exists(strFileName))
+                if (File.Exists(fileName))
                 {
-                    streamReader = File.OpenText(strFileName);
+                    streamReader = File.OpenText(fileName);
                     string contents = streamReader.ReadToEnd();
 
                     streamReader.Close();
                     streamReader = null;
 
                     lblInfo.Text = contents;
-                    lblStatus.Text = "Successfully read " + strFileName;
+                    lblStatus.Text = "Successfully read " + fileName;
                 }
                 else
                 {
-                    throw new Exception(strFileName + " does not exist.");
-
-
-
-
-
-
-
-
-
+                    throw new Exception(fileName + " does not exist.");
 
                 }
 
-
-                
             }
             catch (Exception ex)
             {
                 lblStatus.Text = ex.Message;
                 lblStatus.ForeColor = Color.Red;
-                throw;
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                lblStatus.ForeColor = Color.Blue;
+                if (!string.IsNullOrEmpty(fileName) && File.Exists(fileName))
+                {
+                    File.Delete(fileName);
+                    lblStatus.Text = $"{fileName} was deleted.";
+                }
+                else
+                {
+                    throw new FileNotFoundException($"{fileName} not set or does not exist.");
+                }
+            }
+            catch (FileNotFoundException ex)
+            {
+                lblStatus.Text = ex.Message;
+                lblStatus.ForeColor = Color.Purple;
+            }
+            catch (Exception ex)
+            {
+                lblStatus.Text = ex.Message;
+                lblStatus.ForeColor = Color.Red;
+            }
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            Opacity = trackBar1.Value / 100.0;
+        }
+
+        private void btnWriteAppend_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                lblStatus.ForeColor = Color.Blue;
+
+
+                //Or use relative pathing
+                //string strFileName = 
+
+                StreamWriter streamWriter;
+
+                // use the streamwriter to create a file;
+                streamWriter = File.AppendText(fileName);
+
+                // put the data in the file;
+                string strContents = txtInfo.Text;
+                streamWriter.WriteLine(strContents);
+
+                // clean up;
+                streamWriter.Close();
+                streamWriter = null;
+
+                lblStatus.Text = $"File written ({fileName})";
+            }
+            catch (Exception ex)
+            {
+                statusStrip.Text = ex.Message;
+                lblStatus.ForeColor = Color.Red;
+            }
+        }
+
+        private void btnCopy_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                lblStatus.ForeColor = Color.Blue;
+                string targetFile = Path.GetDirectoryName(fileName) + "\\data_copy.txt";
+
+                if (!string.IsNullOrEmpty(fileName) && File.Exists(fileName))
+                {
+                    File.Copy(fileName, targetFile);
+                    lblStatus.Text = $"{fileName} was copied.";
+                }
+                else
+                {
+                    throw new FileNotFoundException($"{fileName} not set or does not exist.");
+                }
+            }
+            catch (FileNotFoundException ex)
+            {
+                lblStatus.Text = ex.Message;
+                lblStatus.ForeColor = Color.Purple;
+            }
+            catch (Exception ex)
+            {
+                lblStatus.Text = ex.Message;
+                lblStatus.ForeColor = Color.Red;
+            }
+        }
+
+        private void btnReadByLine_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                lblStatus.ForeColor = Color.Blue;
+
+                StreamReader streamReader;
+                lblInfo.Text = string.Empty;
+
+                if (File.Exists(fileName))
+                {
+                    streamReader = File.OpenText(fileName);
+                    
+                    lbxInfo.Items.Clear();
+
+
+                    lines = new List<string>();
+                    // loop while I am not at the end of the file;
+                    while (!streamReader.EndOfStream)
+                    {
+                        //lbxInfo.Items.Add(streamReader.ReadLine());
+                        lines.Add(streamReader.ReadLine());
+                    }
+
+                    //Bind the lines to the list box
+                    lbxInfo.DataSource = lines;
+
+                    streamReader.Close();
+                    streamReader = null;
+
+                    lblStatus.Text = $"Successfully read {lines.Count} records.";
+                }
+                else
+                {
+                    throw new Exception(fileName + " does not exist.");
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                lblStatus.Text = ex.Message;
+                lblStatus.ForeColor = Color.Red;
             }
         }
     }

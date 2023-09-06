@@ -40,13 +40,13 @@
             btnTimerToggle = new Button();
             btnWrite = new Button();
             btnRead = new Button();
-            button4 = new Button();
-            button5 = new Button();
+            btnDelete = new Button();
+            btnWriteAppend = new Button();
             button6 = new Button();
             button7 = new Button();
             button8 = new Button();
-            button9 = new Button();
-            button10 = new Button();
+            btnReadByLine = new Button();
+            btnCopy = new Button();
             button12 = new Button();
             button13 = new Button();
             button14 = new Button();
@@ -57,8 +57,10 @@
             timer1 = new System.Windows.Forms.Timer(components);
             statusStrip = new StatusStrip();
             lblStatus = new ToolStripStatusLabel();
+            trackBar1 = new TrackBar();
             menuStrip1.SuspendLayout();
             statusStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)trackBar1).BeginInit();
             SuspendLayout();
             // 
             // menuStrip1
@@ -145,23 +147,25 @@
             btnRead.UseVisualStyleBackColor = true;
             btnRead.Click += btnRead_Click;
             // 
-            // button4
+            // btnDelete
             // 
-            button4.Location = new Point(12, 130);
-            button4.Name = "button4";
-            button4.Size = new Size(99, 23);
-            button4.TabIndex = 4;
-            button4.Text = "button4";
-            button4.UseVisualStyleBackColor = true;
+            btnDelete.Location = new Point(12, 130);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(99, 23);
+            btnDelete.TabIndex = 4;
+            btnDelete.Text = "Delete";
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
-            // button5
+            // btnWriteAppend
             // 
-            button5.Location = new Point(12, 159);
-            button5.Name = "button5";
-            button5.Size = new Size(99, 23);
-            button5.TabIndex = 5;
-            button5.Text = "button5";
-            button5.UseVisualStyleBackColor = true;
+            btnWriteAppend.Location = new Point(12, 159);
+            btnWriteAppend.Name = "btnWriteAppend";
+            btnWriteAppend.Size = new Size(99, 23);
+            btnWriteAppend.TabIndex = 5;
+            btnWriteAppend.Text = "Write Append";
+            btnWriteAppend.UseVisualStyleBackColor = true;
+            btnWriteAppend.Click += btnWriteAppend_Click;
             // 
             // button6
             // 
@@ -190,23 +194,25 @@
             button8.Text = "button8";
             button8.UseVisualStyleBackColor = true;
             // 
-            // button9
+            // btnReadByLine
             // 
-            button9.Location = new Point(12, 217);
-            button9.Name = "button9";
-            button9.Size = new Size(99, 23);
-            button9.TabIndex = 7;
-            button9.Text = "button9";
-            button9.UseVisualStyleBackColor = true;
+            btnReadByLine.Location = new Point(12, 217);
+            btnReadByLine.Name = "btnReadByLine";
+            btnReadByLine.Size = new Size(99, 23);
+            btnReadByLine.TabIndex = 7;
+            btnReadByLine.Text = "Read By Line";
+            btnReadByLine.UseVisualStyleBackColor = true;
+            btnReadByLine.Click += btnReadByLine_Click;
             // 
-            // button10
+            // btnCopy
             // 
-            button10.Location = new Point(12, 188);
-            button10.Name = "button10";
-            button10.Size = new Size(99, 23);
-            button10.TabIndex = 6;
-            button10.Text = "button10";
-            button10.UseVisualStyleBackColor = true;
+            btnCopy.Location = new Point(12, 188);
+            btnCopy.Name = "btnCopy";
+            btnCopy.Size = new Size(99, 23);
+            btnCopy.TabIndex = 6;
+            btnCopy.Text = "Copy";
+            btnCopy.UseVisualStyleBackColor = true;
+            btnCopy.Click += btnCopy_Click;
             // 
             // button12
             // 
@@ -277,7 +283,7 @@
             // statusStrip
             // 
             statusStrip.Items.AddRange(new ToolStripItem[] { lblStatus });
-            statusStrip.Location = new Point(0, 550);
+            statusStrip.Location = new Point(0, 500);
             statusStrip.Name = "statusStrip";
             statusStrip.Size = new Size(1010, 22);
             statusStrip.TabIndex = 18;
@@ -287,11 +293,23 @@
             lblStatus.Name = "lblStatus";
             lblStatus.Size = new Size(0, 17);
             // 
+            // trackBar1
+            // 
+            trackBar1.Location = new Point(137, 449);
+            trackBar1.Maximum = 100;
+            trackBar1.Minimum = 1;
+            trackBar1.Name = "trackBar1";
+            trackBar1.Size = new Size(429, 45);
+            trackBar1.TabIndex = 19;
+            trackBar1.Value = 100;
+            trackBar1.Scroll += trackBar1_Scroll;
+            // 
             // frmNotepad
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1010, 572);
+            ClientSize = new Size(1010, 522);
+            Controls.Add(trackBar1);
             Controls.Add(statusStrip);
             Controls.Add(lbxInfo);
             Controls.Add(txtInfo);
@@ -303,10 +321,10 @@
             Controls.Add(button6);
             Controls.Add(button7);
             Controls.Add(button8);
-            Controls.Add(button9);
-            Controls.Add(button10);
-            Controls.Add(button5);
-            Controls.Add(button4);
+            Controls.Add(btnReadByLine);
+            Controls.Add(btnCopy);
+            Controls.Add(btnWriteAppend);
+            Controls.Add(btnDelete);
             Controls.Add(btnRead);
             Controls.Add(btnWrite);
             Controls.Add(btnTimerToggle);
@@ -319,6 +337,7 @@
             menuStrip1.PerformLayout();
             statusStrip.ResumeLayout(false);
             statusStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)trackBar1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -336,13 +355,13 @@
         private Button btnTimerToggle;
         private Button btnWrite;
         private Button btnRead;
-        private Button button4;
-        private Button button5;
+        private Button btnDelete;
+        private Button btnWriteAppend;
         private Button button6;
         private Button button7;
         private Button button8;
-        private Button button9;
-        private Button button10;
+        private Button btnReadByLine;
+        private Button btnCopy;
         private Button button12;
         private Button button13;
         private Button button14;
@@ -353,5 +372,6 @@
         private System.Windows.Forms.Timer timer1;
         private StatusStrip statusStrip;
         private ToolStripStatusLabel lblStatus;
+        private TrackBar trackBar1;
     }
 }
