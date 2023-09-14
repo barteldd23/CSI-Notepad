@@ -5,6 +5,7 @@ namespace DDB.Notepad.UI
     public partial class frmNotepad : Form
     {
         string fileName = @"c:\users\public\data.txt";
+        string folder = string.Empty;
         List<string> lines;
 
         public frmNotepad()
@@ -316,7 +317,8 @@ namespace DDB.Notepad.UI
                     streamWriter.Close();
                     streamWriter = null;
                     lblStatus.Text = $"{fileName} written. . .";
-                }else
+                }
+                else
                 {
                     throw new Exception("No file selected ... ");
                 }
@@ -325,6 +327,99 @@ namespace DDB.Notepad.UI
             {
                 lblStatus.Text = ex.Message;
                 lblStatus.ForeColor = Color.Red;
+            }
+        }
+
+        private void btnSelectOpenFile_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                lblStatus.ForeColor = Color.Blue;
+                lblStatus.Text = string.Empty;
+
+                OpenFileDialog openFileDialog;
+
+                openFileDialog = new OpenFileDialog();
+
+                openFileDialog.Title = "Pick a file";
+                openFileDialog.InitialDirectory = @"c:\Users\public";
+                openFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+
+                // Show the dialog to the user
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    fileName = openFileDialog.FileName;
+                    StreamReader streamReader = File.OpenText(fileName);
+                    lblInfo.Text = streamReader.ReadToEnd();
+
+                    lblStatus.Text = openFileDialog.FileName;
+
+                    streamReader.Close();
+                    streamReader = null;
+                }
+                else
+                {
+                    throw new Exception("No file selected. No soup for you!");
+                }
+            }
+            catch (Exception ex)
+            {
+                lblStatus.Text = ex.Message;
+                lblStatus.ForeColor = Color.Red;
+            }
+        }
+
+        private void btnSelectColor_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ColorDialog colorDialog = new ColorDialog();
+                if (colorDialog.ShowDialog() == DialogResult.OK)
+                {
+                    this.BackColor = colorDialog.Color;
+                }
+            }
+            catch (Exception ex)
+            {
+                lblStatus.Text = ex.Message;
+                lblStatus.ForeColor = Color.Red;
+            }
+        }
+
+        private void btnChangeButtonsColor_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ColorDialog colorDialog = new ColorDialog();
+                if (colorDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Loop through all the controls on the form.
+                    for (int i = 0; i < this.Controls.Count; i++)
+                    {
+                        // Ask if this controls[i] is a button
+                        if (this.Controls[i].GetType() == typeof(Button))
+                        {
+                            this.Controls[i].BackColor = colorDialog.Color;
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                lblStatus.Text = ex.Message;
+                lblStatus.ForeColor = Color.Red;
+            }
+        }
+
+        private void btnSelectDirectory_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+
+            if(folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                folder = folderBrowserDialog.SelectedPath;
+                lblStatus.Text = $"Selected Folder : {folder}";
             }
         }
     }

@@ -42,15 +42,15 @@
             btnRead = new Button();
             btnDelete = new Button();
             btnWriteAppend = new Button();
-            button6 = new Button();
+            btnSelectOpenFile = new Button();
             btnSaveFile = new Button();
             btnPickAFile = new Button();
             btnReadByLine = new Button();
             btnCopy = new Button();
             button12 = new Button();
-            button13 = new Button();
-            button14 = new Button();
-            button15 = new Button();
+            btnSelectDirectory = new Button();
+            btnChangeButtonsColor = new Button();
+            btnSelectColor = new Button();
             lblInfo = new Label();
             txtInfo = new TextBox();
             lbxInfo = new ListBox();
@@ -167,14 +167,15 @@
             btnWriteAppend.UseVisualStyleBackColor = true;
             btnWriteAppend.Click += btnWriteAppend_Click;
             // 
-            // button6
+            // btnSelectOpenFile
             // 
-            button6.Location = new Point(12, 304);
-            button6.Name = "button6";
-            button6.Size = new Size(99, 23);
-            button6.TabIndex = 10;
-            button6.Text = "button6";
-            button6.UseVisualStyleBackColor = true;
+            btnSelectOpenFile.Location = new Point(12, 304);
+            btnSelectOpenFile.Name = "btnSelectOpenFile";
+            btnSelectOpenFile.Size = new Size(99, 23);
+            btnSelectOpenFile.TabIndex = 10;
+            btnSelectOpenFile.Text = "Select Open File";
+            btnSelectOpenFile.UseVisualStyleBackColor = true;
+            btnSelectOpenFile.Click += btnSelectOpenFile_Click;
             // 
             // btnSaveFile
             // 
@@ -225,32 +226,35 @@
             button12.Text = "button12";
             button12.UseVisualStyleBackColor = true;
             // 
-            // button13
+            // btnSelectDirectory
             // 
-            button13.Location = new Point(12, 391);
-            button13.Name = "button13";
-            button13.Size = new Size(99, 23);
-            button13.TabIndex = 13;
-            button13.Text = "button13";
-            button13.UseVisualStyleBackColor = true;
+            btnSelectDirectory.Location = new Point(12, 391);
+            btnSelectDirectory.Name = "btnSelectDirectory";
+            btnSelectDirectory.Size = new Size(99, 23);
+            btnSelectDirectory.TabIndex = 13;
+            btnSelectDirectory.Text = "Select Directory";
+            btnSelectDirectory.UseVisualStyleBackColor = true;
+            btnSelectDirectory.Click += btnSelectDirectory_Click;
             // 
-            // button14
+            // btnChangeButtonsColor
             // 
-            button14.Location = new Point(12, 362);
-            button14.Name = "button14";
-            button14.Size = new Size(99, 23);
-            button14.TabIndex = 12;
-            button14.Text = "button14";
-            button14.UseVisualStyleBackColor = true;
+            btnChangeButtonsColor.Location = new Point(12, 362);
+            btnChangeButtonsColor.Name = "btnChangeButtonsColor";
+            btnChangeButtonsColor.Size = new Size(99, 23);
+            btnChangeButtonsColor.TabIndex = 12;
+            btnChangeButtonsColor.Text = "Buttons Color";
+            btnChangeButtonsColor.UseVisualStyleBackColor = true;
+            btnChangeButtonsColor.Click += btnChangeButtonsColor_Click;
             // 
-            // button15
+            // btnSelectColor
             // 
-            button15.Location = new Point(12, 333);
-            button15.Name = "button15";
-            button15.Size = new Size(99, 23);
-            button15.TabIndex = 11;
-            button15.Text = "button15";
-            button15.UseVisualStyleBackColor = true;
+            btnSelectColor.Location = new Point(12, 333);
+            btnSelectColor.Name = "btnSelectColor";
+            btnSelectColor.Size = new Size(99, 23);
+            btnSelectColor.TabIndex = 11;
+            btnSelectColor.Text = "Select Color";
+            btnSelectColor.UseVisualStyleBackColor = true;
+            btnSelectColor.Click += btnSelectColor_Click;
             // 
             // lblInfo
             // 
@@ -317,10 +321,10 @@
             Controls.Add(txtInfo);
             Controls.Add(lblInfo);
             Controls.Add(button12);
-            Controls.Add(button13);
-            Controls.Add(button14);
-            Controls.Add(button15);
-            Controls.Add(button6);
+            Controls.Add(btnSelectDirectory);
+            Controls.Add(btnChangeButtonsColor);
+            Controls.Add(btnSelectColor);
+            Controls.Add(btnSelectOpenFile);
             Controls.Add(btnSaveFile);
             Controls.Add(btnPickAFile);
             Controls.Add(btnReadByLine);
@@ -359,15 +363,15 @@
         private Button btnRead;
         private Button btnDelete;
         private Button btnWriteAppend;
-        private Button button6;
+        private Button btnSelectOpenFile;
         private Button btnSaveFile;
         private Button btnPickAFile;
         private Button btnReadByLine;
         private Button btnCopy;
         private Button button12;
-        private Button button13;
-        private Button button14;
-        private Button button15;
+        private Button btnSelectDirectory;
+        private Button btnChangeButtonsColor;
+        private Button btnSelectColor;
         private Label lblInfo;
         private TextBox txtInfo;
         private ListBox lbxInfo;
