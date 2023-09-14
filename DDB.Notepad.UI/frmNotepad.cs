@@ -416,10 +416,23 @@ namespace DDB.Notepad.UI
         {
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
 
-            if(folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
                 folder = folderBrowserDialog.SelectedPath;
                 lblStatus.Text = $"Selected Folder : {folder}";
+            }
+        }
+
+        private void btnSetFont_Click(object sender, EventArgs e)
+        {
+            FontDialog fontDialog = new FontDialog();
+
+            if(fontDialog.ShowDialog() == DialogResult.OK)
+            {
+                foreach(Control control in this.Controls)
+                {
+                    control.Font = fontDialog.Font;
+                }
             }
         }
     }

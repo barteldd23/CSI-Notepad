@@ -47,7 +47,7 @@
             btnPickAFile = new Button();
             btnReadByLine = new Button();
             btnCopy = new Button();
-            button12 = new Button();
+            btnSetFont = new Button();
             btnSelectDirectory = new Button();
             btnChangeButtonsColor = new Button();
             btnSelectColor = new Button();
@@ -58,6 +58,7 @@
             statusStrip = new StatusStrip();
             lblStatus = new ToolStripStatusLabel();
             trackBar1 = new TrackBar();
+            button1 = new Button();
             menuStrip1.SuspendLayout();
             statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trackBar1).BeginInit();
@@ -217,14 +218,15 @@
             btnCopy.UseVisualStyleBackColor = true;
             btnCopy.Click += btnCopy_Click;
             // 
-            // button12
+            // btnSetFont
             // 
-            button12.Location = new Point(12, 420);
-            button12.Name = "button12";
-            button12.Size = new Size(99, 23);
-            button12.TabIndex = 14;
-            button12.Text = "button12";
-            button12.UseVisualStyleBackColor = true;
+            btnSetFont.Location = new Point(12, 420);
+            btnSetFont.Name = "btnSetFont";
+            btnSetFont.Size = new Size(99, 23);
+            btnSetFont.TabIndex = 14;
+            btnSetFont.Text = "Set Font";
+            btnSetFont.UseVisualStyleBackColor = true;
+            btnSetFont.Click += btnSetFont_Click;
             // 
             // btnSelectDirectory
             // 
@@ -310,17 +312,27 @@
             trackBar1.Value = 100;
             trackBar1.Scroll += trackBar1_Scroll;
             // 
+            // button1
+            // 
+            button1.Location = new Point(12, 449);
+            button1.Name = "button1";
+            button1.Size = new Size(99, 23);
+            button1.TabIndex = 20;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            // 
             // frmNotepad
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1010, 522);
+            Controls.Add(button1);
             Controls.Add(trackBar1);
             Controls.Add(statusStrip);
             Controls.Add(lbxInfo);
             Controls.Add(txtInfo);
             Controls.Add(lblInfo);
-            Controls.Add(button12);
+            Controls.Add(btnSetFont);
             Controls.Add(btnSelectDirectory);
             Controls.Add(btnChangeButtonsColor);
             Controls.Add(btnSelectColor);
@@ -368,7 +380,7 @@
         private Button btnPickAFile;
         private Button btnReadByLine;
         private Button btnCopy;
-        private Button button12;
+        private Button btnSetFont;
         private Button btnSelectDirectory;
         private Button btnChangeButtonsColor;
         private Button btnSelectColor;
@@ -379,5 +391,6 @@
         private StatusStrip statusStrip;
         private ToolStripStatusLabel lblStatus;
         private TrackBar trackBar1;
+        private Button button1;
     }
 }
