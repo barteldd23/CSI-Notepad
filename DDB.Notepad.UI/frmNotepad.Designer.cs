@@ -43,8 +43,8 @@
             btnDelete = new Button();
             btnWriteAppend = new Button();
             button6 = new Button();
-            button7 = new Button();
-            button8 = new Button();
+            btnSaveFile = new Button();
+            btnPickAFile = new Button();
             btnReadByLine = new Button();
             btnCopy = new Button();
             button12 = new Button();
@@ -176,23 +176,25 @@
             button6.Text = "button6";
             button6.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // btnSaveFile
             // 
-            button7.Location = new Point(12, 275);
-            button7.Name = "button7";
-            button7.Size = new Size(99, 23);
-            button7.TabIndex = 9;
-            button7.Text = "button7";
-            button7.UseVisualStyleBackColor = true;
+            btnSaveFile.Location = new Point(12, 275);
+            btnSaveFile.Name = "btnSaveFile";
+            btnSaveFile.Size = new Size(99, 23);
+            btnSaveFile.TabIndex = 9;
+            btnSaveFile.Text = "Save File";
+            btnSaveFile.UseVisualStyleBackColor = true;
+            btnSaveFile.Click += btnSaveFile_Click;
             // 
-            // button8
+            // btnPickAFile
             // 
-            button8.Location = new Point(12, 246);
-            button8.Name = "button8";
-            button8.Size = new Size(99, 23);
-            button8.TabIndex = 8;
-            button8.Text = "button8";
-            button8.UseVisualStyleBackColor = true;
+            btnPickAFile.Location = new Point(12, 246);
+            btnPickAFile.Name = "btnPickAFile";
+            btnPickAFile.Size = new Size(99, 23);
+            btnPickAFile.TabIndex = 8;
+            btnPickAFile.Text = "Pick A File";
+            btnPickAFile.UseVisualStyleBackColor = true;
+            btnPickAFile.Click += btnPickAFile_Click;
             // 
             // btnReadByLine
             // 
@@ -319,8 +321,8 @@
             Controls.Add(button14);
             Controls.Add(button15);
             Controls.Add(button6);
-            Controls.Add(button7);
-            Controls.Add(button8);
+            Controls.Add(btnSaveFile);
+            Controls.Add(btnPickAFile);
             Controls.Add(btnReadByLine);
             Controls.Add(btnCopy);
             Controls.Add(btnWriteAppend);
@@ -358,8 +360,8 @@
         private Button btnDelete;
         private Button btnWriteAppend;
         private Button button6;
-        private Button button7;
-        private Button button8;
+        private Button btnSaveFile;
+        private Button btnPickAFile;
         private Button btnReadByLine;
         private Button btnCopy;
         private Button button12;

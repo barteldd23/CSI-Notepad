@@ -1,3 +1,5 @@
+using System.Web;
+
 namespace DDB.Notepad.UI
 {
     public partial class frmNotepad : Form
@@ -226,7 +228,7 @@ namespace DDB.Notepad.UI
                 if (File.Exists(fileName))
                 {
                     streamReader = File.OpenText(fileName);
-                    
+
                     lbxInfo.Items.Clear();
 
 
@@ -252,6 +254,72 @@ namespace DDB.Notepad.UI
 
                 }
 
+            }
+            catch (Exception ex)
+            {
+                lblStatus.Text = ex.Message;
+                lblStatus.ForeColor = Color.Red;
+            }
+        }
+
+        private void btnPickAFile_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                lblStatus.ForeColor = Color.Blue;
+                lblStatus.Text = string.Empty;
+
+                OpenFileDialog openFileDialog;
+
+                openFileDialog = new OpenFileDialog();
+
+                openFileDialog.Title = "Pick a file";
+                openFileDialog.InitialDirectory = @"c:\Users\public";
+
+                // Show the dialog to the user
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    lblStatus.Text = openFileDialog.FileName;
+                    fileName = openFileDialog.FileName;
+                }
+                else
+                {
+                    throw new Exception("No file selected. No soup for you!");
+                }
+            }
+            catch (Exception ex)
+            {
+                lblStatus.Text = ex.Message;
+                lblStatus.ForeColor = Color.Red;
+            }
+        }
+
+        private void btnSaveFile_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                lblStatus.ForeColor = Color.Blue;
+                lblStatus.Text = string.Empty;
+
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                StreamWriter streamWriter;
+
+                saveFileDialog.Title = "Please pick a file";
+                saveFileDialog.InitialDirectory = @"c:\Users\public";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    fileName = saveFileDialog.FileName;
+                    streamWriter = File.CreateText(fileName);
+
+                    streamWriter.WriteLine(txtInfo.Text);
+                    streamWriter.Close();
+                    streamWriter = null;
+                    lblStatus.Text = $"{fileName} written. . .";
+                }else
+                {
+                    throw new Exception("No file selected ... ");
+                }
             }
             catch (Exception ex)
             {
