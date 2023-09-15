@@ -2,8 +2,7 @@ using System.Drawing.Printing;
 using System.Web;
 
 namespace DDB.Notepad.UI
-{//test push. test
-    //test after sync.
+{ //test after made connection.
     public partial class frmNotepad : Form
     {
         string fileName = @"c:\users\public\data.txt";
