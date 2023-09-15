@@ -58,7 +58,8 @@
             statusStrip = new StatusStrip();
             lblStatus = new ToolStripStatusLabel();
             trackBar1 = new TrackBar();
-            button1 = new Button();
+            btnChangeStyle = new Button();
+            btnPrintPreview = new Button();
             menuStrip1.SuspendLayout();
             statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trackBar1).BeginInit();
@@ -291,7 +292,7 @@
             // statusStrip
             // 
             statusStrip.Items.AddRange(new ToolStripItem[] { lblStatus });
-            statusStrip.Location = new Point(0, 500);
+            statusStrip.Location = new Point(0, 515);
             statusStrip.Name = "statusStrip";
             statusStrip.Size = new Size(1010, 22);
             statusStrip.TabIndex = 18;
@@ -312,21 +313,33 @@
             trackBar1.Value = 100;
             trackBar1.Scroll += trackBar1_Scroll;
             // 
-            // button1
+            // btnChangeStyle
             // 
-            button1.Location = new Point(12, 449);
-            button1.Name = "button1";
-            button1.Size = new Size(99, 23);
-            button1.TabIndex = 20;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            btnChangeStyle.Location = new Point(12, 449);
+            btnChangeStyle.Name = "btnChangeStyle";
+            btnChangeStyle.Size = new Size(99, 23);
+            btnChangeStyle.TabIndex = 20;
+            btnChangeStyle.Text = "Change Style";
+            btnChangeStyle.UseVisualStyleBackColor = true;
+            btnChangeStyle.Click += btnChangeStyle_Click;
+            // 
+            // btnPrintPreview
+            // 
+            btnPrintPreview.Location = new Point(12, 478);
+            btnPrintPreview.Name = "btnPrintPreview";
+            btnPrintPreview.Size = new Size(99, 23);
+            btnPrintPreview.TabIndex = 21;
+            btnPrintPreview.Text = "Print Preview";
+            btnPrintPreview.UseVisualStyleBackColor = true;
+            btnPrintPreview.Click += btnPrintPreview_Click;
             // 
             // frmNotepad
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1010, 522);
-            Controls.Add(button1);
+            ClientSize = new Size(1010, 537);
+            Controls.Add(btnPrintPreview);
+            Controls.Add(btnChangeStyle);
             Controls.Add(trackBar1);
             Controls.Add(statusStrip);
             Controls.Add(lbxInfo);
@@ -391,6 +404,7 @@
         private StatusStrip statusStrip;
         private ToolStripStatusLabel lblStatus;
         private TrackBar trackBar1;
-        private Button button1;
+        private Button btnChangeStyle;
+        private Button btnPrintPreview;
     }
 }
